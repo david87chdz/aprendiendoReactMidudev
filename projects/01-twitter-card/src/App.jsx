@@ -6,10 +6,10 @@ export function App() {
     const  format = (userName) => `@${userName}`;
     return (
         <section className='App'>
-        <TwitterFollowCard formatUserName={format} isFollowing={false} userName='pheralb' name='Pablo Hernández' />
-        <TwitterFollowCard formatUserName={format} isFollowing userName='vxnder' name='Vanderhart' />
-        <TwitterFollowCard formatUserName={format} isFollowing={true} userName='midudev' name='Miguel Angel Duran' />
-        <TwitterFollowCard formatUserName={format} isFollowing userName='midudev' name='Miguel Angel Duran' />
+        <TwitterFollowCard formatUserName={format} userName='pheralb' name='Pablo Hernández' />
+        <TwitterFollowCard formatUserName={format} userName='vxnder' name='Vanderhart' />
+        <TwitterFollowCard formatUserName={format} userName='midudev' name='Miguel Angel Duran' />
+        <TwitterFollowCard formatUserName={format} userName='midudev' name='Miguel Angel Duran' />
         </section>
     )
 }
