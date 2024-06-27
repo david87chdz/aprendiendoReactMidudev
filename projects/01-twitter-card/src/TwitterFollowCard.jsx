@@ -1,9 +1,9 @@
 import { useState } from "react";
 /* eslint-disable react/prop-types */
-export function TwitterFollowCard({formatUserName, userName, name }) {
+export function TwitterFollowCard({formatUserName, userName, name , initialIsFollowing}) {
 
     //Cambiamos las ter lineas por la siguiente desestructuración
-    const [isFollowing, setIsFollowing] = useState(false);
+    const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
 
     //const state = useState(false);
     //Primera posición del array es el estado, la segunda es la función que modifica el estado 
@@ -31,6 +31,7 @@ export function TwitterFollowCard({formatUserName, userName, name }) {
             <aside>
                 <button className={buttonClassName} onClick={handleClick}>
                     {text}
+                    <span className="tw-followCard-stopFollow">Dejar de seguir</span>
                 </button>
             </aside>
         </article>

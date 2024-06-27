@@ -52,3 +52,9 @@
     background-color:red;
      
 }
+
+.tw-followCard-stopFollowing{
+    display: none;
+    background: transparent;
+    border: 1px solid #bbb;
+}
