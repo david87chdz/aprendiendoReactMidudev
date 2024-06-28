@@ -4,12 +4,13 @@ import { checkWinner, checkEndGame } from './logic/board.js';
 import { WinnerModal } from './components/WinnerModal';
 import { TURNS } from './constants';
 import confetti from 'canvas-confetti';
-
+import { saveGameStorage, resetGameStorage } from './logic/storage/index.js';
 
 
 
 
 function App() {
+  //Estados
   const [board, setBoard] = useState(() => {
     const savedBoard = window.localStorage.getItem('board');
     return savedBoard ? JSON.parse(savedBoard) : Array(9).fill(null);
@@ -26,8 +27,8 @@ function App() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
-    window.localStorage.removeItem('board');
-    window.localStorage.removeItem('turn');
+    resetGameStorage();
+
   }
 
  
@@ -44,7 +45,6 @@ function App() {
     const newBoard = [...board];
     newBoard[index] = turn; // x or o
     setBoard(newBoard);
-    console.log(newBoard[index]);
 
     
     //Cambiar el turno
@@ -52,8 +52,10 @@ function App() {
     setTurn(newTurn);
 
     //Guardar partida
-    window.localStorage.setItem('board', JSON.stringify(newBoard));
-    window.localStorage.setItem('turn', newTurn);
+    saveGameStorage({
+      board: newBoard,
+      turn: newTurn
+    });
 
     //Verificar si hay un ganador
     const newWinner = checkWinner(newBoard);
