@@ -1,42 +1,27 @@
-import React, { useEffect } from "react";
-import { useState } from 'react';
+import './App.css'
+import { useCatImage } from './hooks/useCatImage.js'
+import { useCatFact } from './hooks/useCatFact.js'
+import { Otro } from './components/Otro.jsx'
 
-const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
-const CAT_PREFIX_IMAGE_URL = 'https://cataas.com'
+export function App () {
+  const { fact, refreshFact } = useCatFact()
+  const { imageUrl } = useCatImage({ fact })
 
-export function App (){
-    const [fact,setFact] = useState()
-    const [imageUrl, setImageUrl] = useState()
+  const handleClick = async () => {
+    refreshFact()
+  }
 
+  return (
+    <main>
+      <h1>App de gatitos</h1>
 
-    useEffect(() => {
-        fetch('https://catfact.ninja/fact')
-            .then (res => res.json())
-            .then (data => {
-                const {fact} = data
-                setFact(data.fact)
-                const firstWord = fact.split(' ')[0]
+      <button onClick={handleClick}>Get new fact</button>
 
-                fetch(`https://cataas.com/cat/says/${firstWord}?size=50&color=red&json=true`)
-                    .then(res => res.json(), console.log('res'))
+      {fact && <p>{fact}</p>}
+      {imageUrl && <img src={imageUrl} alt={`Image extracted using the first three words for ${fact}`} />}
 
-                    .then(data => {
-                        const {url}  = data
-                        setImageUrl(url)
-                        console.log(url)
-                    })
-            })
-    },[])
-
-
-     
-
-    return (
-        <main>
-            <h1>App de gatitos</h1>
-            {fact && <p>{fact}</p>}
-            {imageUrl && <img src={`${CAT_PREFIX_IMAGE_URL}${imageUrl}`} alt={`Image extracted using the first word for
-            ${fact}` }/>}
-        </main>
-    )
+        <h2>Otro componente para prueba</h2>
+      <Otro />
+    </main>
+  )
 }
