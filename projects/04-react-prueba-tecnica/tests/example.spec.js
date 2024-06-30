@@ -32,7 +32,7 @@ test('app shows random fact and image', async ({ page }) => {
 
   //Aquí le decimos que esperamos que la URL de la imagen no sea vacía
   //otra forma de hacerlo
-  await expect(imgSrc?.startsWith(CAT_PREFIX_IMAGE_URL)).toBe(true);
+  await expect(imgSrc?.startsWith(CAT_PREFIX_IMAGE_URL)).toBeTruthy();
   //await expect(imgSrc).not.toBe('');
 });
 
