@@ -1,13 +1,17 @@
 import { useState } from 'react'
 
-import './App.css'
+import { useMovies } from './hooks/useMovies'
+
+import { Movies } from './components/Movies'
 
 const API = 'https://www.omdbapi.com/?i=tt3896198&apikey=1ad26af8&s='
 
 
-function App() {
-  
 
+function App() {
+
+  const { movies } = useMovies()
+  
   return (
     <div className='page'>
       <header>
@@ -18,7 +22,7 @@ function App() {
       </form>
       </header>
       <main>
-        Aqui irán los resultados
+        <Movies movies={movies} />
       </main>
     </div>
   )
