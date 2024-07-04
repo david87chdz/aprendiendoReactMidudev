@@ -65,14 +65,15 @@ To install the projects, follow these steps:
 ## Usage
 
 Each project has its own set of usage instructions. Please navigate to the directory of the project you are interested in and follow the instructions in its README.
- Install:
- bash
+
+## Install
+ ```bash
  npm install
+````
  Create a new branch:
    ```bash
    git checkout -b your-branch-name
-
-
+````
 ## Contributions
 
 Contributions are welcome. If you would like to contribute, please follow these steps:
