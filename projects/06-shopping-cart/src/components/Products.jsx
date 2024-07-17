@@ -1,14 +1,17 @@
 import "./Products.css";
 import { AddToCartIcon } from "./icons.jsx";
 
-export function Products({ products }) {
+// eslint-disable-next-line react/prop-types
+export function Products({products}) {
+  console.log(products);
   return (
     <main className="products">
-      {products.map((product) => (
+      {products.slice(0,10)
+      .map((product) => (
         <li key={product.id}>
           <img src={product.thumbnail} alt={product.title} />
           <div>
-            <strong>{product.title}</strong>
+            <strong>{product.title}</strong> - ${product.price}
           </div>
           <div>
             <button>
